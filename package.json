@@ -1,0 +1,32 @@
+{
+  "name": "mochine",
+  "version": "0.0.0",
+  "description": "Mock engine: used to generate testing data.",
+  "author": "veequn@qq.com",
+  "keywords": [
+    "mock",
+    "engine",
+    "mockjs"
+  ],
+  "maintainers": [
+    "veequn@qq.com"
+  ],
+  "license": "MIT",
+  "repository": "https://github.com/vqun/mochine",
+  "main": "./lib/index.js",
+  "bugs": {
+    "url": "https://github.com/vqun/mochine/issues",
+    "email": "veequn@qq.com"
+  },
+  "scripts": {
+    "build": "`npm bin`/babel src -d build ; `npm bin`/webpack --optimize-minimize build/index.js build/mochine.min.js"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "webpack": "^1.14.0"
+  }
+}
