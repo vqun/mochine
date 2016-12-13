@@ -5,9 +5,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = Mochine;
 
-var _compile = require('./lib/compile');
+var _mocker = require('./lib/mocker');
 
-var _compile2 = _interopRequireDefault(_compile);
+var _mocker2 = _interopRequireDefault(_mocker);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -24,7 +24,5 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  */
 
 function Mochine(descriptor) {
-  return (0, _compile2.default)(descriptor);
+  return new _mocker2.default(descriptor);
 }
-
-window.Mochine = Mochine;

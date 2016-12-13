@@ -5,7 +5,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.zeroize = zeroize;
 exports.is = is;
-exports.travel = travel;
+exports.arrayFrom = arrayFrom;
+// see https://github.com/vqun/Vtils/blob/master/utils.js
+
 var toString = Object.prototype.toString;
 
 var random = exports.random = Math.random;
@@ -41,43 +43,13 @@ var isString = exports.isString = function isString(s) {
   return is(s) === 'string';
 };
 
-var keys = exports.keys = isFunction(Object.keys) ? Object.keys : function (o) {
-  var kis = [];
-  if (isArray(o)) {
-    var k = o.length;
-    while (k--) {
-      kis.unshift(k);
-    }
-  } else {
-    for (var _k in o) {
-      o.hasOwnProperty(_k) && kis.push(_k);
-    }
+var slice = Array.slice;
+function arrayFrom(arrLike) {
+  if (!('length' in arrLike)) {
+    return [];
   }
-  return kis;
-};
-
-function travel(o) {
-  var fn = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function (name, value) {
-    return value;
-  };
-
-  if (isPlainObject(o)) {
-    var ret = {};
-    for (var k in o) {
-      if (o.hasOwnProperty(k)) {
-        var ok = o[k];
-        ret[k] = travel(ok, fn);
-      }
-    }
-    return ret;
+  if ('from' in Array) {
+    return Array.from(arrLike);
   }
-  if (isArray(o)) {
-    var _ret = [];
-    for (var _k2 = o.length; _k2--;) {
-      var _ok = o[_k2];
-      _ret.unshift(travel(_ok, fn));
-    }
-    return _ret;
-  }
-  return fn(o.name || 'undefined', o);
+  return slice.call(arrLike);
 }

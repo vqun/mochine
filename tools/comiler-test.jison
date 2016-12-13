@@ -5,7 +5,7 @@
 %%
 
 \s+                   /* skip whitespace */
-[0-9]+("."[0-9]+)?\b  return 'NUMBER'
+\d+("."\d+)?$\b       return 'NUMBER'
 "("                   return '('
 ")"                   return ')'
 "int"                 return 'Int'
@@ -17,7 +17,7 @@
 "enum"                return 'Enum'
 ","                   return ','
 <<EOF>>               return 'EOF'
-[^()]*                return 'INVALID'
+[^(),]*               return 'INVALID'
 
 /lex
 
@@ -46,7 +46,7 @@ e
     | Int e
         {$$ = parseInt.apply(null, [].concat($2));}
     | Date e
-        {$$ = Date.apply(null, [].concat($2));}
+        {$$ = $2;}
     | '(' ')'
         {$$ = null;}
     ;

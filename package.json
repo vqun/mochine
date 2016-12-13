@@ -13,17 +13,19 @@
   ],
   "license": "MIT",
   "repository": "https://github.com/vqun/mochine",
-  "main": "./lib/index.js",
+  "main": "./build/index.js",
   "bugs": {
     "url": "https://github.com/vqun/mochine/issues",
     "email": "veequn@qq.com"
   },
   "scripts": {
-    "build": "`npm bin`/babel src -d build ; `npm bin`/webpack --optimize-minimize build/index.js build/mochine.min.js"
+    "build": "`npm bin`/babel src -d build --ignore mochine.js ; `npm bin`/webpack -p --module-bind 'js=babel' src/mochine.js build/mochine.min.js",
+    "test": "`npm bin`/webpack -p -w -d --module-bind 'js=babel' src/mochine.js build/mochine.min.js"
   },
   "dependencies": {},
   "devDependencies": {
     "babel-cli": "^6.18.0",
+    "babel-loader": "^6.2.9",
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-0": "^6.16.0",
