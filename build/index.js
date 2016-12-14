@@ -3,11 +3,16 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.Typegines = undefined;
 exports.default = Mochine;
 
 var _mocker = require('./lib/mocker');
 
 var _mocker2 = _interopRequireDefault(_mocker);
+
+var _typegines = require('./typegines');
+
+var _typegines2 = _interopRequireDefault(_typegines);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26,3 +31,5 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function Mochine(descriptor) {
   return new _mocker2.default(descriptor);
 }
+
+exports.Typegines = _typegines2.default;

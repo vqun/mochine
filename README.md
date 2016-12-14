@@ -1,5 +1,5 @@
 # mochine
-Mock engine: used to generate testing data.
+Mock engine: a generator for simulating data. mochine could help simulate the data you describe.
 
 # Install
 ## in npm
@@ -10,23 +10,26 @@ Mock engine: used to generate testing data.
 ```
 
 # Usage
+## Usage 1: Using [[DESCRIPTOR]]
 ```javascript
+import Mochine from 'mochine'; // npm usage; Mochine is defined on window if using in browser
 const Mock = Mochine([[DESCRIPTOR]]);
+// Then, see Demo below
 ```
-## [[DESCRIPTOR]]
+### [[DESCRIPTOR]]
 ```javascript
 [[DESCRIPTOR]] = [[DESC]] || ArrayOf([[DESC]]);
 ```
 
-## [[DESC]]
+### [[DESC]]
 ```javascript
 [[DESC]] = {
   name: [[DESCRIPTION]]
 };
 ```
 
-## [[DESCRIPTION]]
-### Generate an integer
+### [[DESCRIPTION]]
+#### Generate an integer
 ```javascript
 [[DESCRIPTION]] = "int([[MIN]], [[MAX]])"
 
@@ -34,7 +37,7 @@ const Mock = Mochine([[DESCRIPTOR]]);
 [[MAX]]: maximal integer, default 100
 ```
 
-### Generate a number(decimal or integer)
+#### Generate a number(decimal or integer)
 ```javascript
 [[DESCRIPTION]] = "int([[MIN]], [[MAX]])"
 
@@ -42,7 +45,7 @@ const Mock = Mochine([[DESCRIPTOR]]);
 [[MAX]]: maximal number, default 100
 ```
 
-### Generate a string
+#### Generate a string
 ```javascript
 [[DESCRIPTION]] = "string([[MIN]], [[MAX]])"
 
@@ -50,19 +53,19 @@ const Mock = Mochine([[DESCRIPTOR]]);
 [[MAX]]: maximal length of the generated string, default 12
 ```
 
-### Generate a boolean
+#### Generate a boolean
 ```javascript
 [[DESCRIPTION]] = "bool()"
 ```
 
-### Generate a enumeration
+#### Generate a enumeration
 ```javascript
 [[DESCRIPTION]] = "enum([e1, e2, ..., en])" || "enum(e1, e2, ..., en)"
 
 e1 ~ en: Mochine will pick one from them when mocking, util now, en only support number or string
 ```
 
-### Generate a date
+#### Generate a date
 ```javascript
 [[DESCRIPTION]] = "date([[FORMAT]], [[START]], [[END]])"
 
@@ -77,20 +80,33 @@ others.
 Mochine will pick one date between [[START]] and [[END]] when mocking.
 ```
 
-### Generate an array
+#### Generate an array
 ```javascript
 [[DESCRIPTION]] = "array([[LENGTH]], [[GEN]])"
 
 [[LENGTH]]: length of the generated array, default 10,
-but randomed (between 0 and 10) if [[LENGTH]] is a function
+but randomed (between 0 and 10) if [[LENGTH]] is a `function`
 (and [[LENGTH]] will be change to be [[GEN]]).
 
 [[GEN]]: array elements' [[DESCRIPTION]], any one of [[DESCRIPTION]] introduced above.
 default 'string()'
 ```
 
-### Generate self-defined data
+#### Generate self-defined data
 ***Cooming next***
+
+## Usage 2: Using Typegines
+```javascript
+import Mochine, { Typegines } from 'mochine'; // npm usage; Mochine is defined on window if using in browser
+const Mock = Mochine({
+  name: Typegines.string(3, 10),
+  age: Typegines.int(0, 150),
+  birthday: Typegines.date("YYYY/MM/DD", "1949/10/01", "2016/01/01")
+  // ...
+});
+// Then, see Demo below
+```
+`Typegines` has all type methods corresponding to `[[DESCRIPTION]]` above with same arguments.
 
 # Demo
 ```javascript
