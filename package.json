@@ -1,7 +1,7 @@
 {
   "name": "mochine",
   "version": "0.0.0",
-  "description": "Mock engine: used to generate testing data.",
+  "description": "Mock engine: a generator for simulating data. mochine could help simulate the data you describe.",
   "author": "veequn@qq.com",
   "keywords": [
     "mock",
@@ -22,7 +22,6 @@
     "build": "`npm bin`/babel src -d build --ignore mochine.js ; `npm bin`/webpack -p --module-bind 'js=babel' src/mochine.js build/mochine.min.js",
     "test": "`npm bin`/webpack -p -w -d --module-bind 'js=babel' src/mochine.js build/mochine.min.js"
   },
-  "dependencies": {},
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-loader": "^6.2.9",

@@ -3,4 +3,6 @@ npm-debug.log
 *.swp
 **.DS_Store
 src
+tools
+build/*.html
 *.map

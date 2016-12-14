@@ -88,7 +88,7 @@ Mochine will pick one date between [[START]] and [[END]] when mocking.
 but randomed (between 0 and 10) if [[LENGTH]] is a `function`
 (and [[LENGTH]] will be change to be [[GEN]]).
 
-[[GEN]]: array elements' [[DESCRIPTION]], any one of [[DESCRIPTION]] introduced above.
+[[GEN]]: array elements [[DESCRIPTION]], any one of [[DESCRIPTION]] introduced above.
 default 'string()'
 ```
 
