@@ -22,10 +22,13 @@ function string() {
   if (isNaN(min = Number(min))) min = 0;
   if (isNaN(max = Number(max))) max = 12;
   var len = (0, _int2.default)(min, max);
-  return function () {
+  var strGen = function strGen() {
     var l = len();
     var s = (0, _utils.random)().toString(36).slice(2);
     var sl = s.length;
     return Array(Math.ceil(l / sl)).join(s) + s.slice(0, l % sl);
   };
+  strGen.__name__ = 'string';
+  strGen.toString = _utils.toNative;
+  return strGen;
 }

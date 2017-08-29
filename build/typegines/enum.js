@@ -13,9 +13,12 @@ exports.default = function (e) {
     data = [].concat(Array.prototype.slice.call(arguments));
   }
   var g = (0, _int2.default)(0, data.length);
-  return function () {
+  var enumGen = function enumGen() {
     return data[g()];
   };
+  enumGen.__name__ = 'enum';
+  enumGen.toString = _utils.toNative;
+  return enumGen;
 };
 
 var _utils = require('../lib/utils');

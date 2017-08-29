@@ -14,7 +14,10 @@ function number() {
 
   if (isNaN(min = Number(min))) min = 0;
   if (isNaN(max = Number(max))) max = 100;
-  return function () {
+  var numberGen = function numberGen() {
     return +((max - min) * (0, _utils.random)() + min).toFixed(2);
   };
+  numberGen.__name__ = 'number';
+  numberGen.toString = _utils.toNative;
+  return numberGen;
 } // 数字

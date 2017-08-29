@@ -28,7 +28,7 @@ function array() {
   }
   if (!(0, _utils.isNumber)(length)) length = -1;
   if (!(0, _utils.isFunction)(gen)) gen = (0, _string2.default)();
-  return function () {
+  var arrGen = function arrGen() {
     var k = length;
     var ret = [];
     if (k === -1) k = LengthGen();
@@ -36,4 +36,7 @@ function array() {
       ret.push(gen());
     }return ret;
   };
+  arrGen.__name__ = 'array';
+  arrGen.toString = _utils.toNative;
+  return arrGen;
 }

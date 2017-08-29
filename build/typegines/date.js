@@ -37,12 +37,15 @@ function date(format, start, end) {
   } else {
     format = format.toUpperCase();
   }
-  return function () {
+  var dateGen = function dateGen() {
     var d = new Date(s + gen());
     return format.replace(/(Y|M|D|H|I|S)+/gi, function (m0, m1) {
       return zeroize4((m1 === 'M' ? 1 : 0) + d[MethodMap[m1]]()).slice(-m0.length);
     });
   };
+  dateGen.__name__ = 'date';
+  dateGen.toString = _utils.toNative;
+  return dateGen;
 }
 
 var SEP = /\D+/gm;

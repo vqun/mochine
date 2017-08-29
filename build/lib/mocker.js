@@ -41,6 +41,9 @@ var Mocker = function () {
         (0, _utils.isArray)(o) && (runner.__length__ = o.length);
         for (var k in o) {
           if (o.hasOwnProperty(k)) {
+            // 如果已经存在，则使其可写，覆盖之
+            // 像name这种，function的name是不可写的，必须重新定义
+            if (runner.hasOwnProperty(k) && Object.defineProperty) Object.defineProperty(runner, k, { writable: true });
             var ok = o[k];
             runner[k] = new this.constructor(ok);
           }

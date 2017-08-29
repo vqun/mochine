@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.zeroize = zeroize;
 exports.is = is;
 exports.arrayFrom = arrayFrom;
+exports.toNative = toNative;
 // see https://github.com/vqun/Vtils/blob/master/utils.js
 
 var toString = Object.prototype.toString;
@@ -52,4 +53,8 @@ function arrayFrom(arrLike) {
     return Array.from(arrLike);
   }
   return slice.call(arrLike);
+}
+
+function toNative() {
+  return this.__name__ + '() { [native code] }';
 }
