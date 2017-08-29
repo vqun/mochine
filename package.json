@@ -1,6 +1,6 @@
 {
   "name": "mochine",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Mock engine: a generator for simulating data. mochine could help simulate the data you describe.",
   "author": "veequn@qq.com",
   "keywords": [
